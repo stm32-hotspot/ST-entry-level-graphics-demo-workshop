@@ -13,7 +13,7 @@ You will find in this repository all the material used during the session and th
 ## Software prerequisites
 
 ### TouchGFX Designer version 4.26.1
-The TouchGFX Desinger installer cannot be downloaded in a standalone way, it is included in the TouchGFX expansion pack for STM32CubeMX .
+The TouchGFX Desinger installer cannot be downloaded in a standalone way, it is included in the TouchGFX expansion pack for STM32CubeMX.
 
 - Donwload [X-CUBE-TOUCHGFX](https://www.st.com/en/embedded-software/x-cube-touchgfx.html)
 - Extract the X-CUBE-TOUCHGFX\4.26.1\Utilities\PC_Software\TouchGFXDesigner\TouchGFX-4.26.1.msi
