@@ -56,8 +56,8 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
   - Only VS Code&reg; IDE (cmake) is currently supported
   - Some minor warnings may be visible in the VS Code&reg; build output windows
 
-  As a summary, this TBS usage is currently recommended for prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
-
+  As a summary, the TBS usage (in the current version 3.0.2) is mainly recommended for prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
+  
   Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects is available on the [TouchGFX Documentation](https://support.touchgfx.com/docs/introduction/welcome).
   
 ## 2. TouchGFX Designer RGB Compression feature
