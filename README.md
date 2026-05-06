@@ -9,10 +9,10 @@ You will find in this repository all the material used during the session and th
   - [1.1. Hardware](#11-hardware)
   - [1.2. Software](#12-software)
     - [1.2.1. TouchGFX Designer](#121-touchgfx-designer)
-    - [1.2.2. VS Code&reg;](#122-microsoft-vscode)
+    - [1.2.2. VS Code](#122-vs-code)
 - [2. Sanity Check](#2-sanity-check)
   - [2.1 Create a basic TouchGFX project](#21-create-a-basic-touchgfx-project)
-  - [2.2 Build project in VS Code&reg;](#22-build-project-in-vscode)
+  - [2.2 Build project in VS Code](#22-build-project-in-vs-code)
 - [3. Hands-on](#3-hands-on)
 
 ## 1. Prerequisites
