@@ -9,10 +9,10 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 - [1. Introduction](#1-introduction)
   - [1.1. Troubleshoot](#11-troubleshoot)
   - [1.2. Default VS Code extension Build analyzer](#12-default-vs-code-extension-build-analyzer)
-- [2. NUCLEO-C5A3ZG TBS considerations](#2-nucleo-c5a3zg-tbs-considerations)
-- [3. TouchGFX Designer RGB Compression feature](#3-touchgfx-designer-rgb-compression-feature)
-- [4. TouchGFX Designer L8 compression feature](#4-touchgfx-designer-l8-compression-feature)
-- [5. Other compression techniques](#5-other-compression-techniques)
+  - [1.3 NUCLEO-C5A3ZG TBS considerations](#13-nucleo-c5a3zg-tbs-considerations)
+- [2. TouchGFX Designer RGB Compression feature](#2-touchgfx-designer-rgb-compression-feature)
+- [3. TouchGFX Designer L8 compression feature](#3-touchgfx-designer-l8-compression-feature)
+- [4. Other compression techniques](#4-other-compression-techniques)
 
 ## 1. Introduction  
 
@@ -29,12 +29,11 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 ### 1.2. Default VS Code extension Build analyzer
   [🔼Top](#table-of-contents)  
   
-  The default build analyzer included in the current version of the extension does not give the proper information on external FLASH usage.
-  For this hands-on another build analyzer extension 'STM32 Build Analyze" will be used.
-  Feel free to use any ohther extension.
-    ![VSCode-STM32BuildAnalyzer-Extension](./img/VSCode-STM32BuildAnalyzer_Extension.gif)  
+  The default build analyzer included in the current version of the extension does not give the proper information on external FLASH usage.  
+  For this hands-on a third party extension 'STM32 Build Analyze" will be used.
+  Feel free to use any other extension or the VS Code&reg; build output window that provides accurate information on external FLASH usage, but not the details.
 
-## 2. NUCLEO-C5A3ZG TBS considerations
+### 1.3. NUCLEO-C5A3ZG TBS considerations
   [🔼Top](#table-of-contents)  
   
   TouchGFX Board Setup (TBS) are read-to-use complete setup for a specific ST evaluation kits such as Discovery kits with embedded display or Nucleo kit combined with a display shield, as for the TBS used in this hands-on.  
@@ -59,15 +58,12 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 
   A documentation on how to use TouchGFX 4.x.x with STM32CubeMX2 projects will soon be published.
   
-## 3. TouchGFX Designer RGB Compression feature
+## 2. TouchGFX Designer RGB Compression feature
   [🔼Top](#table-of-contents)  
   
   In this section 2 screens will be defined each one including an image widget populated with a Bitmap from the stock images.
   FLASH usage will be analyzed first without any optimization and then with compression option.
-
-  Note that for the FLASH usage detailed analysis, a third party package will be used: STM32 Build Analyzer.
-  The Build analyzer that comes with the STM32CubeIDE for Visual Studio Code currently does not show the details of the external FLASH usage, only the internal one. However, the build output window will show the relevant information, without details.
-
+  
   1. Insert a second screen using the dedicated button  
     ![3.1.Designer_Add_Screen](./img/3.1.Designer_Add_Screen.gif)
   
@@ -111,7 +107,7 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 
   With very simple image format settings the external FLASH usage has been significantly reduced (around 28% compression ratio).
 
-## 4. TouchGFX Designer L8 compression feature
+## 3. TouchGFX Designer L8 compression feature
   [🔼Top](#table-of-contents)  
   
   In this section an existing demo will be imported.
@@ -147,7 +143,7 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 >  
 >  The gain in FLASH footprint remains significant despite this, but it must be kept in mind and balanced against the use of RGB compression techniques that has no ROM impact but a computing one at runtime (for the decompression process).  
 
-## 5. Other compression techniques
+## 4. Other compression techniques
   [🔼Top](#table-of-contents)  
   
   Other FLASH usage reduction techniques are available in the TouchGFX Designer, notably the use of Vector Graphics for both images and text.
@@ -156,4 +152,3 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
   Please refer to the following article for more details:
   [Flash-limited GUI Development](https://support.touchgfx.com/docs/flash-limited)
   
-[🔼Top](#table-of-contents)
