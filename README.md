@@ -32,7 +32,8 @@ The hardware setup consists in 2 boards:
 ### 1.2. Software
 
 #### 1.2.1. TouchGFX Designer
-
+  [🔼Top](#table-of-contents)  
+  
 The current version is the 4.26.1.
 
 The TouchGFX Designer installer cannot be downloaded in a standalone way, it is included in the TouchGFX expansion pack for STM32CubeMX.
@@ -42,11 +43,10 @@ The TouchGFX Designer installer cannot be downloaded in a standalone way, it is 
 - Extract the installer `X-CUBE-TOUCHGFX\4.26.1\Utilities\PC_Software\TouchGFXDesigner\TouchGFX-4.26.1.msi`  
   ![TouchGFXDesignerInstaller](./img/TouchGFX-Designer_Installer.gif)
 
-- Run the installer and prefer the default installation folder on `C:\` drive.
-
-[🔼 Back to top](#table-of-contents)
+- Run the installer and prefer the default installation folder on `C:\` drive.  
 
 #### 1.2.2. VS Code&reg;
+  [🔼Top](#table-of-contents)  
 
 - Download and install VS Code&reg; from [Visual Studio Code Download](https://code.visualstudio.com/download)
 
@@ -63,8 +63,6 @@ The TouchGFX Designer installer cannot be downloaded in a standalone way, it is 
 > [Guide](https://github.com/stm32-hotspot/Guide_STM32CubeIDE_for_Visual_Studio_Code)  
 > [Official user Manuel](https://www.st.com/resource/en/user_manual/um3512-stm32cube-for-visual-studio-code-installation-guide-stmicroelectronics.pdf)  
 
-[🔼 Back to top](#table-of-contents)
-
 ## 2. Sanity Check
 Before starting the lab, let's check that your setup is functional.
 If you manage to complete all the following steps you will be ready not only to follow the hands-on part of this workshop but also start prototyping on STM32C5!
@@ -74,6 +72,8 @@ If you manage to complete all the following steps you will be ready not only to 
   <img src="./img/NUCLEO-C5A3ZG_RVA15MD.png" width ="250" />
 
 ### 2.1 Create a basic TouchGFX project
+  [🔼Top](#table-of-contents)  
+  
   1. Launch TouchGFX Designer and create an empty project using the NUCLEO-C5A3ZG template  
     ![TouchGFX-Create-NUCLEO-C5A-Project](./img/TouchGFX-Designer_Create_C5_Project.gif)
 
@@ -83,10 +83,9 @@ If you manage to complete all the following steps you will be ready not only to 
   3. Generate the code  
     ![TouchGFX-Designer-Generate-Code](./img/TouchGFX-Designer_Generate_Code.gif)
 
-[🔼 Back to top](#table-of-contents)
-
 ### 2.2 Build project in VS Code&reg;
-
+  [🔼Top](#table-of-contents)  
+  
   1. Open VS Code&reg;, be sure to be set the right Profile and open the project folder  
     ![VS Code&reg;-Open-Project](./img/VSCode-Open_Project.gif)
 
@@ -99,10 +98,9 @@ If you manage to complete all the following steps you will be ready not only to 
   4. Plug the board and launch a debug session then click on "Go", if the board screen turns to red, sanity check is successfull!  
     ![VS Code&reg;-Launch-Debug](./img/VSCode-Launch_Debug.gif)
 
-[🔼 Back to top](#table-of-contents)
-
 ## 3. Hands-on
-
+  [🔼Top](#table-of-contents)  
+  
   Follow the link [Hands-on](./hands_on_part.md)
 
 
