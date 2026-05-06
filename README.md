@@ -38,8 +38,10 @@ The current version is the 4.26.1.
 The TouchGFX Designer installer cannot be downloaded in a standalone way, it is included in the TouchGFX expansion pack for STM32CubeMX.
 
 - Download [X-CUBE-TOUCHGFX](https://www.st.com/en/embedded-software/x-cube-touchgfx.html)
+
 - Extract the installer `X-CUBE-TOUCHGFX\4.26.1\Utilities\PC_Software\TouchGFXDesigner\TouchGFX-4.26.1.msi`  
   ![TouchGFXDesignerInstaller](./img/TouchGFX-Designer_Installer.gif)
+
 - Run the installer and prefer the default installation folder on `C:\` drive.
 
 [🔼 Back to top](#table-of-contents)
@@ -47,16 +49,18 @@ The TouchGFX Designer installer cannot be downloaded in a standalone way, it is 
 #### 1.2.2. VS Code&reg;
 
 - Download and install VS Code&reg; from [Visual Studio Code Download](https://code.visualstudio.com/download)
+
 - Install the extension [STM32CubeIDE for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension)
   - Open VS Code&reg; 
-  - Create a new `stm32Cube` profile (recommended)  
-    ![Create a profile](./img/VSCode-Create_Profile.gif)
-  - Open Extensions panel
-  - Search for "STM32CubeIDE extension for VSCode", install, dependencies will get installed automatically  
-    ![Install Extension](./img/VSCode-STM32CubeIDE_Extension.gif)
 
-> Notes  
-> [VS Code&reg; Guide](https://github.com/stm32-hotspot/Guide_STM32CubeIDE_for_Visual_Studio_Code)  
+  - Create a new `Workshop` profile. This step is recommended if you use VS Code&reg; for other purpose, in this dedicated profile you will install only the pacakges needed for STM32 programming and avoid any kind of incompatibility between packages.  
+    ![Create a profile](./img/VSCode-Create_Profile.gif)  
+
+  - Open Extensions panel and search for "STM32CubeIDE extension for VSCode", install, dependencies will get installed automatically  
+    ![Install Extension](./img/VSCode-STM32CubeIDE_Extension.gif)  
+
+> Usefull links on VS Code&reg; extension  
+> [Guide](https://github.com/stm32-hotspot/Guide_STM32CubeIDE_for_Visual_Studio_Code)  
 > [Official user Manuel](https://www.st.com/resource/en/user_manual/um3512-stm32cube-for-visual-studio-code-installation-guide-stmicroelectronics.pdf)  
 
 [🔼 Back to top](#table-of-contents)
@@ -65,7 +69,7 @@ The TouchGFX Designer installer cannot be downloaded in a standalone way, it is 
 Before starting the lab, let's check that your setup is functional.
 If you manage to complete all the following steps you will be ready not only to follow the hands-on part of this workshop but also start prototyping on STM32C5!
 
-- Plug the Riverdi display on the NUCLEO-C5A3ZG morpho connector
+- Plug the Riverdi display on the NUCLEO-C5A3ZG morpho connector, once plugged the text on each board with the same orientation should be read in the same direction, see below.  
 
   <img src="./img/NUCLEO-C5A3ZG_RVA15MD.png" width ="250" />
 
@@ -73,7 +77,7 @@ If you manage to complete all the following steps you will be ready not only to 
   1. Launch TouchGFX Designer and create an empty project using the NUCLEO-C5A3ZG template  
     ![TouchGFX-Create-NUCLEO-C5A-Project](./img/TouchGFX-Designer_Create_C5_Project.gif)
 
-  2. Insert a box widget in the main screen and set color to red  
+  2. Insert a box widget in the main screen and set color to red (or any color)  
     ![TouchGFX-Designer-Insert-Box](./img/TouchGFX-Designer_Insert_Box.gif)
   
   3. Generate the code  
