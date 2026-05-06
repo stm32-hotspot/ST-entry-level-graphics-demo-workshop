@@ -63,35 +63,36 @@ The TouchGFX Designer installer cannot be downloaded in a standalone way, it is 
 
 ## 2. Sanity Check
 Before starting the lab, let's check that your setup is functional.
+If you manage to complete all the following steps you will be ready not only to follow the hands-on part of this workshop but also start prototyping on STM32C5!
 
 - Plug the Riverdi display on the NUCLEO-C5A3ZG morpho connector
 
   <img src="./img/NUCLEO-C5A3ZG_RVA15MD.png" width ="250" />
 
 ### 2.1 Create a basic TouchGFX project
-  - Launch TouchGFX Designer and create an empty project using the NUCLEO-C5A3ZG template  
+  1. Launch TouchGFX Designer and create an empty project using the NUCLEO-C5A3ZG template  
     ![TouchGFX-Create-NUCLEO-C5A-Project](./img/TouchGFX-Designer_Create_C5_Project.gif)
 
-  - Insert a box widget in the main screen and set color to red  
+  2. Insert a box widget in the main screen and set color to red  
     ![TouchGFX-Designer-Insert-Box](./img/TouchGFX-Designer_Insert_Box.gif)
   
-  - Generate the code  
+  3. Generate the code  
     ![TouchGFX-Designer-Generate-Code](./img/TouchGFX-Designer_Generate_Code.gif)
 
 [🔼 Back to top](#table-of-contents)
 
 ### 2.2 Build project in VS Code&reg;
 
-  - Open VS Code&reg;, be sure to be set the right Profile and open the project folder  
+  1. Open VS Code&reg;, be sure to be set the right Profile and open the project folder  
     ![VS Code&reg;-Open-Project](./img/VSCode-Open_Project.gif)
 
-  - Setup the project (in case you missed the popup window)  
+  2. Setup the project (in case you missed the popup window)  
     ![VS Code&reg;-Setup-Project](./img/VSCode-Setup_Project.gif)
 
-  - Build the project  
+  3. Build the project  
     ![VS Code&reg;-Build-Project](./img/VSCode-Build_Project.gif)
 
-  - Plug the board and launch a debug session then click on "Go", if the board screen turns to red, sanity check is successfull!  
+  4. Plug the board and launch a debug session then click on "Go", if the board screen turns to red, sanity check is successfull!  
     ![VS Code&reg;-Launch-Debug](./img/VSCode-Launch_Debug.gif)
 
 [🔼 Back to top](#table-of-contents)
