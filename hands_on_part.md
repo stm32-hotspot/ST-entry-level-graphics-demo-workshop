@@ -1,7 +1,7 @@
-# ST entry level GUIs Demo Workshop [🔼 Home](./README.md#table-of-contents)<!-- omit from toc -->  
+# ST entry level GUIs Demo Workshop [🔼 Home](./README.md#table-of-contents) <!-- omit from toc -->
 
----
-This hands-on demonstrate in practice some of the TouchGFX Designer dedicated to FLASH usage reduction when working on entry-level MCUs.
+This hands-on demonstrate in practice some of the TouchGFX Designer features dedicated to FLASH usage reduction when working on entry-level MCUs.
+
 ---
 
 ## Table of contents <!-- omit from toc -->
@@ -103,14 +103,31 @@ This hands-on demonstrate in practice some of the TouchGFX Designer dedicated to
   In this section an existing demo will be imported.
   FLASH usage will be analyzed first without any optimization and after changing the format of some input images to a Look-up table one.
 
-  1. Import the existing knob display light demo to the project
-  2. Generate the code
-  3. Rebuild the VS Code&reg; project and check the SPI_FLASH usage
-  4. Enable L8_RGB565 compression in TouchGFX Designer project for some images  
+  After demonstrating how to import an existing example or demo to a project we will use the 8-bits Look-Up Table format on some assets of the demo to reduce the footprint of the demo.
+
+  1. Import the existing knob display demo to the project  
+    ![4.1.Designer_Import_Existing_Demo](./img/4.1.Designer_Import_Existing_Demo.gif)  
+  2. Generate the code  
+    ![4.2.Designer_Generate](./img/4.2.Designer_Generate.gif)  
+  3. Rebuild the VS Code&reg; project and check the SPI_FLASH usage  
+    ![4.3.VSCode_Rebuild_Check_Footprint](./img/4.3.VSCode_Rebuild_Check_Footprint.gif)  
+  4. Enable L8_RGB565 compression in TouchGFX Designer project for some images
     4.1. Select several images  
     4.2. Apply a parameter to selected images  
-  5. Generate the code
+    ![4.4.Designer_Change_Several_Images_Format](./img/4.4.Designer_Change_Several_Images_Format.gif)  
+  5. Generate the code  
+    ![4.5.Designer_Generate](./img/4.5.Designer_Generate.gif)  
   6. Rebuild the VS Code&reg; project and check the SPI_FLASH usage  
+    ![4.6.VSCode_Rebuild_Check_Footprint](./img/4.6.VSCode_Rebuild_Check_Footprint.gif)  
+
+| Default (RGB565 format) - 1 pixel = 2 bytes color value | Look-Up Table format (L8_RGB565) - 1 pixel = 1 byte index + LUT |
+|:---------------:|:--------:|
+| <img src="./img/4.3.VSCode_Rebuild_Check_Footprint.png" width ="600" />|<img src="./img/4.6.VSCode_Rebuild_Check_Footprint.png" width ="600" />|
+
+> Note that the L8 format involves a per-image overhead in internal FLASH to store the Look-Up Table:  
+>  <img src="./img/4.6.VSCode_Rebuild_Check_Footprint_LUT.png"/>  
+>  
+>  The gain in FLASH footprint remains significant despite this, but it must be kept in mind and balanced against the use of RGB compression techniques that has no ROM impact but a computing one at runtime (for the decompression process).
 
 ## 5. Other compression techniques
 
