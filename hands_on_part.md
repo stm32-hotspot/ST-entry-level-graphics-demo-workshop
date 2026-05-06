@@ -36,27 +36,29 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 ### 1.3. NUCLEO-C5A3ZG TBS considerations
   [🔼Top](#table-of-contents)  
   
-  TouchGFX Board Setup (TBS) are read-to-use complete setup for a specific ST evaluation kits such as Discovery kits with embedded display or Nucleo kit combined with a display shield, as for the TBS used in this hands-on.  
-  [TBS for NUCLEO-C5A3ZG + RVA15MD](./img/TBS-NUCLEO-C5A3ZG_RVA15MD.png)
+  A TouchGFX Board Setup (TBS) is read-to-use, complete setup for a specific ST evaluation kit such as a Discovery kit (with embedded display and memory) or a Nucleo kit combined with a display shield (as the one used in this hands-on).  
   
-  A TBS contains all the low-level drivers for the selected display as well the Board Initialization Code needed for the display interface (e.g. SPI, FMC, LTDC).
+  A TBS contains all the low-level drivers for the selected display as well the Board Initialization Code needed for the display interface (e.g. SPI, FMC, LTDC).  
   The TBSs are based on a STM32CubeMX configuration, so it is possible for you to modify the configuration if you want to experiment or add access to more peripherals.
 
-  However, the STM32C5 family is the first one to come with the updated ecosystem: [STM32CubeMX2](https://community.st.com/t5/developer-news/introducing-stm32cubemx2-a-new-flavor-of-stm32cubemx-tool/ba-p/885793)
+  The following TBS will be used in this hands-on and has some specificities:  
+     ![TBS for NUCLEO-C5A3ZG + RVA15MD](./img/TBS-NUCLEO-C5A3ZG_RVA15MD.png)
+
+  The STM32C5 family is the first one to come with the updated ecosystem: [STM32CubeMX2](https://community.st.com/t5/developer-news/introducing-stm32cubemx2-a-new-flavor-of-stm32cubemx-tool/ba-p/885793)
   
-  If TouchGFX 4.x.x is fully integrated in the STM32CubeMX tool as an expansion pack it is not yet the case on STM32CubeMX2.
+  If TouchGFX 4.x.x is fully supported in the STM32CubeMX tool (as an expansion pack) it is not yet the case on STM32CubeMX2.
   This integration will be guaranteed by the TouchGFX 5.x.x currently under development.
 
   The impact on the NUCLEO-C5A3ZG + RVA15MD TBS are:
-  - An valid STM32CubeMX2 project (i.e. an .ioc2 file) is provided in the template, containing the proper peripheral configuration based on the Cube ecosystem evolution.
+  - A valid STM32CubeMX2 project (i.e. an .ioc2 file) is provided in the template, containing the proper peripheral configuration based on the Cube ecosystem evolution.
   - The link with TouchGFX is done outside STM32CubeMX2, manually modifying some generated files (e.g. CMakeLists.txt)
-  - It is not recommended to generate the code from STM32CubeMX2 as it will break the link with TouchGFX
-  - Only VS Code&reg; IDE is currently supported
+  - Code generation from STM32CubeMX2 must be done with care as it may break the link with TouchGFX
+  - Only VS Code&reg; IDE (cmake) is currently supported
   - Some minor warnings may be visible in the VS Code&reg; build output windows
 
-  As a summary, this TBS usage must be limited to prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
+  As a summary, this TBS usage is currently recommended for prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
 
-  A documentation on how to use TouchGFX 4.x.x with STM32CubeMX2 projects will soon be published.
+  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects is available on the [TouchGFX Documentation](https://support.touchgfx.com/docs/introduction/welcome).
   
 ## 2. TouchGFX Designer RGB Compression feature
   [🔼Top](#table-of-contents)  
