@@ -13,10 +13,10 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
   - [1.4. RAM usage reduction](#14-ram-usage-reduction)
 - [2. TouchGFX Designer RGB image compression feature](#2-touchgfx-designer-rgb-image-compression-feature)
 - [3. TouchGFX Designer L8 image compression feature](#3-touchgfx-designer-l8-image-compression-feature)
-- [4. Other FLASH usage reduction techniques](#4-other-flash-usage-reduction-techniques)
+- [4. Other FLASH saving techniques](#4-other-flash-saving-techniques)
   - [4.1 Compressed LUT format for texts](#41-compressed-lut-format-for-texts)
   - [4.2 Computed graphics](#42-computed-graphics)
-  - [4.3 Vector Graphics](#43-vector-Graphics)
+  - [4.3 Vector Graphics](#43-vector-graphics)
 
 ## 1. Introduction  
 
@@ -163,7 +163,7 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
 >  
 >  The gain in FLASH footprint remains significant despite this, but it must be kept in mind and balanced against the use of RGB compression techniques that has no ROM impact but a computing one at runtime (for the decompression process).  
 
-## 4. Other FLASH usage reduction techniques
+## 4. Other FLASH saving techniques
   
 ### 4.1 Compressed LUT format for texts
   [🔼Top](#table-of-contents)  
