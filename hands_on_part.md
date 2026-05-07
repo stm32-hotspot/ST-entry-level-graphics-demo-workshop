@@ -58,7 +58,7 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 
   As a summary, the TBS usage (in the current version 3.0.2) is mainly recommended for prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
   
-  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects is available on the [TouchGFX Documentation](https://support.touchgfx.com/docs/introduction/welcome).
+  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects is available on the [TouchGFX Documentation](https://support.touchgfx.com/docs/development/scenarios/touchgfx-with-mx2).
   
 ## 2. TouchGFX Designer RGB Compression feature
   [🔼Top](#table-of-contents)  
