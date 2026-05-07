@@ -1,6 +1,6 @@
 # ST entry level GUIs Demo Workshop <!-- omit from toc -->
 
-You will find in this repository all the material used during the session and the associated collateral to replicate the activities on your own, during the workshop or afterwards.
+This repository contains all the requirements needed to follow the hands-on part of the workshop, during the live session or afterwards.
 
 ---
 
@@ -92,15 +92,17 @@ If you manage to complete all the following steps you will be ready not only to 
   2. Setup the project (in case you missed the popup window)  
     ![VS Code&reg;-Setup-Project](./img/VSCode-Setup_Project.gif)
 
-  3. Build the project  
+  3. Add the TouchGFX folder to the workspace.  
+     In this TBS the TouchGFX folder is next to the main project folder so it must be added manually to the VS Code&reg; workspace to ease code browsing/searching and breakpoint settings  
+    ![VS Code&reg;-Add-TouchGFX-to-Workspace](./img/VSCode-Add-TouchGFX-to-workspace.gif)
+
+  4. Build the project  
     ![VS Code&reg;-Build-Project](./img/VSCode-Build_Project.gif)
 
-  4. Plug the board and launch a debug session then click on "Go", if the board screen turns to red, sanity check is successfull!  
+  5. Plug the board and launch a debug session then click on "Go", if the board screen turns to red, sanity check is successfull!  
     ![VS Code&reg;-Launch-Debug](./img/VSCode-Launch_Debug.gif)
 
 ## 3. Hands-on
   [🔼Top](#table-of-contents)  
   
-  Follow the link [Hands-on](./hands_on_part.md)
-
-
+  Follow this link [Hands-on](./hands_on_part.md)
