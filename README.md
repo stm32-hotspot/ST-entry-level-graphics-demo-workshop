@@ -61,7 +61,7 @@ The TouchGFX Designer installer cannot be downloaded in a standalone way, it is 
 
 > Usefull links on VS Code&reg; extension  
 > [Guide](https://github.com/stm32-hotspot/Guide_STM32CubeIDE_for_Visual_Studio_Code)  
-> [Official user Manuel](https://www.st.com/resource/en/user_manual/um3512-stm32cube-for-visual-studio-code-installation-guide-stmicroelectronics.pdf)  
+> [Official user Manual](https://www.st.com/resource/en/user_manual/um3512-stm32cube-for-visual-studio-code-installation-guide-stmicroelectronics.pdf)  
 
 ## 2. Sanity Check
 Before starting the lab, let's check that your setup is functional.
