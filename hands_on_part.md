@@ -1,6 +1,6 @@
 # ST entry level GUIs Demo Workshop <!-- omit from toc -->
 
-This hands-on demonstrate in practice some of the TouchGFX Designer features dedicated to FLASH usage reduction when working on entry-level MCUs.  
+This hands-on demonstrates in practice some of the TouchGFX Designer features dedicated to FLASH usage reduction when working on entry-level MCUs.  
 [🔼 Home](./README.md#table-of-contents)  
 
 ---
@@ -8,11 +8,15 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 ## Table of contents <!-- omit from toc -->
 - [1. Introduction](#1-introduction)
   - [1.1. Troubleshoot](#11-troubleshoot)
-  - [1.2. Default VS Code extension Build analyzer](#12-default-vs-code-extension-build-analyzer)
-- [2. NUCLEO-C5A3ZG TBS considerations](#2-nucleo-c5a3zg-tbs-considerations)
-- [3. TouchGFX Designer RGB Compression feature](#3-touchgfx-designer-rgb-compression-feature)
-- [4. TouchGFX Designer L8 compression feature](#4-touchgfx-designer-l8-compression-feature)
-- [5. Other compression techniques](#5-other-compression-techniques)
+  - [1.2. Build analyzer](#12-build-analyzer)
+  - [1.3. NUCLEO-C5A3ZG TBS considerations](#13-nucleo-c5a3zg-tbs-considerations)
+  - [1.4. RAM usage reduction](#14-ram-usage-reduction)
+- [2. TouchGFX Designer RGB image compression feature](#2-touchgfx-designer-rgb-image-compression-feature)
+- [3. TouchGFX Designer L8 image compression feature](#3-touchgfx-designer-l8-image-compression-feature)
+- [4. Other FLASH saving techniques](#4-other-flash-saving-techniques)
+  - [4.1 Compressed LUT format for texts](#41-compressed-lut-format-for-texts)
+  - [4.2 Computed graphics](#42-computed-graphics)
+  - [4.3 Vector Graphics](#43-vector-graphics)
 
 ## 1. Introduction  
 
@@ -26,48 +30,60 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 
   VSCode installation and especially the STM32CubeIDE extension may be lead to some issues, the most common one concerns [proxy/certificate configuration](https://community.st.com/t5/stm32-mcus/how-to-configure-the-proxy-or-certificate-for-stm32cubeide-for/ta-p/846476).  
 
-### 1.2. Default VS Code extension Build analyzer
+### 1.2. Build analyzer
   [🔼Top](#table-of-contents)  
   
-  The default build analyzer included in the current version of the extension does not give the proper information on external FLASH usage.
-  For this hands-on another build analyzer extension 'STM32 Build Analyze" will be used.
-  Feel free to use any ohther extension.
-    ![VSCode-STM32BuildAnalyzer-Extension](./img/VSCode-STM32BuildAnalyzer_Extension.gif)  
+  The default build analyzer included in the current version of the extension does not give the proper information on external FLASH usage.  
+  For this hands-on a third party extension 'STM32 Build Analyze" will be used.
+  Feel free to use any other extension or the VS Code&reg; build output window that provides accurate information on external FLASH usage, but not the details.
 
-## 2. NUCLEO-C5A3ZG TBS considerations
+### 1.3. NUCLEO-C5A3ZG TBS considerations
   [🔼Top](#table-of-contents)  
   
-  TouchGFX Board Setup (TBS) are read-to-use complete setup for a specific ST evaluation kits such as Discovery kits with embedded display or Nucleo kit combined with a display shield, as for the TBS used in this hands-on.  
-  [TBS for NUCLEO-C5A3ZG + RVA15MD](./img/TBS-NUCLEO-C5A3ZG_RVA15MD.png)
+  A TouchGFX Board Setup (TBS) is read-to-use, complete setup for a specific ST evaluation kit such as a Discovery kit (with embedded display and memory) or a Nucleo kit combined with a display shield (as the one used in this hands-on).  
   
-  A TBS contains all the low-level drivers for the selected display as well the Board Initialization Code needed for the display interface (e.g. SPI, FMC, LTDC).
+  A TBS contains all the low-level drivers for the selected display as well the Board Initialization Code needed for the display interface (e.g. SPI, FMC, LTDC).  
   The TBSs are based on a STM32CubeMX configuration, so it is possible for you to modify the configuration if you want to experiment or add access to more peripherals.
 
-  However, the STM32C5 family is the first one to come with the updated ecosystem: [STM32CubeMX2](https://community.st.com/t5/developer-news/introducing-stm32cubemx2-a-new-flavor-of-stm32cubemx-tool/ba-p/885793)
+  The following TBS will be used in this hands-on and has some specificities:  
+     ![TBS for NUCLEO-C5A3ZG + RVA15MD](./img/TBS-NUCLEO-C5A3ZG_RVA15MD.png)
+
+  The STM32C5 family is the first one to come with the updated ecosystem: [STM32CubeMX2](https://community.st.com/t5/developer-news/introducing-stm32cubemx2-a-new-flavor-of-stm32cubemx-tool/ba-p/885793)
   
-  If TouchGFX 4.x.x is fully integrated in the STM32CubeMX tool as an expansion pack it is not yet the case on STM32CubeMX2.
+  If TouchGFX 4.x.x is fully supported in the STM32CubeMX tool (as an expansion pack) it is not yet the case on STM32CubeMX2.
   This integration will be guaranteed by the TouchGFX 5.x.x currently under development.
 
   The impact on the NUCLEO-C5A3ZG + RVA15MD TBS are:
-  - An valid STM32CubeMX2 project (i.e. an .ioc2 file) is provided in the template, containing the proper peripheral configuration based on the Cube ecosystem evolution.
+  - A valid STM32CubeMX2 project (i.e. an .ioc2 file) is provided in the template, containing the proper peripheral configuration based on the Cube ecosystem evolution.
   - The link with TouchGFX is done outside STM32CubeMX2, manually modifying some generated files (e.g. CMakeLists.txt)
-  - It is not recommended to generate the code from STM32CubeMX2 as it will break the link with TouchGFX
-  - Only VS Code&reg; IDE is currently supported
+  - Code generation from STM32CubeMX2 must be done with care as it may break the link with TouchGFX
+  - Only VS Code&reg; IDE (cmake) is currently supported
   - Some minor warnings may be visible in the VS Code&reg; build output windows
 
-  As a summary, this TBS usage must be limited to prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
-
-  A documentation on how to use TouchGFX 4.x.x with STM32CubeMX2 projects will soon be published.
+  As a summary, the TBS usage (in the current version 3.0.2) is mainly recommended for prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
   
-## 3. TouchGFX Designer RGB Compression feature
+  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects is available on the [TouchGFX Documentation dedicated article](https://support.touchgfx.com/docs/development/scenarios/touchgfx-with-mx2).  
+  This article will be regularly updated.  
+  
+### 1.4. RAM usage reduction
+  [🔼Top](#table-of-contents)  
+  
+  While we focus on the FLASH usage in this hands-on the RAM usage is also at stake on entry-level MCUs.
+  On the NUCLEO-C5A3ZG TBS the RAM usage reduction is mainly accomplished by using the [Partial Frame buffer strategy](https://support.touchgfx.com/docs/development/scenarios/lowering-memory-usage-with-partial-framebuffer).  
+
+  The actual configuration is in a file that is automatically generated by STM32CubeMX.  
+  Given the current support of TouchGFX in STM32CubeMX2 the framebuffer strategy settings can only be tuned in the generated file directly.
+  If you need to adapt the partial frame buffer strateguy settings (size and number of blocks to be used), open the following file and modify it:  
+  
+  `\TouchGFX\target\generated\TouchGFXGeneratedHAL.cpp`  
+  <img src="./img/1.4.PartialFrameBuffer_TouchGFXGeneratedHAL.png" width ="1024" />
+  
+## 2. TouchGFX Designer RGB image compression feature
   [🔼Top](#table-of-contents)  
   
   In this section 2 screens will be defined each one including an image widget populated with a Bitmap from the stock images.
   FLASH usage will be analyzed first without any optimization and then with compression option.
-
-  Note that for the FLASH usage detailed analysis, a third party package will be used: STM32 Build Analyzer.
-  The Build analyzer that comes with the STM32CubeIDE for Visual Studio Code currently does not show the details of the external FLASH usage, only the internal one. However, the build output window will show the relevant information, without details.
-
+  
   1. Insert a second screen using the dedicated button  
     ![3.1.Designer_Add_Screen](./img/3.1.Designer_Add_Screen.gif)
   
@@ -111,7 +127,7 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 
   With very simple image format settings the external FLASH usage has been significantly reduced (around 28% compression ratio).
 
-## 4. TouchGFX Designer L8 compression feature
+## 3. TouchGFX Designer L8 image compression feature 
   [🔼Top](#table-of-contents)  
   
   In this section an existing demo will be imported.
@@ -147,13 +163,32 @@ This hands-on demonstrate in practice some of the TouchGFX Designer features ded
 >  
 >  The gain in FLASH footprint remains significant despite this, but it must be kept in mind and balanced against the use of RGB compression techniques that has no ROM impact but a computing one at runtime (for the decompression process).  
 
-## 5. Other compression techniques
-  [🔼Top](#table-of-contents)  
+## 4. Other FLASH saving techniques
   
+### 4.1 Compressed LUT format for texts
+  [🔼Top](#table-of-contents)  
+
+  The Look-up table format compression can also be applied to Fonts, directly in the TouchGFX Designer Texts panel:  
+  <img src="./img/4.L4_Font_Format.png" width ="800" />  
+  
+### 4.2 Computed graphics
+  [🔼Top](#table-of-contents)  
+
+  When building a graphical user interface a common practice is to use mostly images for all graphical elements, background images, logo, separators, and then try to reduce their size using compression techniques.  
+  However, some graphic elements can be defined using basic geometrical shapes (circle, line, polygons) which are computed at runtime by the Core and hence require no extra FLASH.  
+  The TouchGFX Designer offers such basic shapes graphic elements called `Canvas Widgets` and can be found in the `Shape` widget menu:  
+  
+  <img src="./img/4.2.TouchGFX-shapes.png" width ="500" />   
+  
+  Please refer to the following article for more details:
+  [Canvas Widgets](https://support.touchgfx.com/docs/development/ui-development/touchgfx-engine-features/canvas-widgets#custom-canvas-widgets)
+
+### 4.3 Vector Graphics
+  [🔼Top](#table-of-contents)  
+
   Other FLASH usage reduction techniques are available in the TouchGFX Designer, notably the use of Vector Graphics for both images and text.
   However, Vector Graphics processing may have a significant impact on RAM and CPU load and it is usually recommended on MCU with dedicated hardware accelerator (i.e. NeoChrom) or high-end ones, which is out of the scope of this workshop. 
 
   Please refer to the following article for more details:
   [Flash-limited GUI Development](https://support.touchgfx.com/docs/flash-limited)
   
-[🔼Top](#table-of-contents)
