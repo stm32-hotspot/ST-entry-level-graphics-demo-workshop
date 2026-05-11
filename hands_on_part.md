@@ -11,12 +11,13 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
   - [1.2. Build analyzer](#12-build-analyzer)
   - [1.3. NUCLEO-C5A3ZG TBS considerations](#13-nucleo-c5a3zg-tbs-considerations)
   - [1.4. RAM usage reduction](#14-ram-usage-reduction)
-- [2. TouchGFX Designer RGB image compression feature](#2-touchgfx-designer-rgb-image-compression-feature)
-- [3. TouchGFX Designer L8 image compression feature](#3-touchgfx-designer-l8-image-compression-feature)
-- [4. Other FLASH saving techniques](#4-other-flash-saving-techniques)
-  - [4.1 Compressed LUT format for texts](#41-compressed-lut-format-for-texts)
-  - [4.2 Computed graphics](#42-computed-graphics)
-  - [4.3 Vector Graphics](#43-vector-graphics)
+- [2. TouchGFX Smart Rendering](#2-touchgfx-smart-rendering)
+- [3. TouchGFX Designer RGB image compression feature](#3-touchgfx-designer-rgb-image-compression-feature)
+- [4. TouchGFX Designer L8 image compression feature](#4-touchgfx-designer-l8-image-compression-feature)
+- [5. Other FLASH saving techniques](#5-other-flash-saving-techniques)
+  - [5.1 Compressed LUT format for texts](#51-compressed-lut-format-for-texts)
+  - [5.2 Computed graphics](#52-computed-graphics)
+  - [5.3 Vector Graphics](#53-vector-graphics)
 
 ## 1. Introduction  
 
@@ -53,16 +54,11 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
   If TouchGFX 4.x.x is fully supported in the STM32CubeMX tool (as an expansion pack) it is not yet the case on STM32CubeMX2.
   This integration will be guaranteed by the TouchGFX 5.x.x currently under development.
 
-  The impact on the NUCLEO-C5A3ZG + RVA15MD TBS are:
-  - A valid STM32CubeMX2 project (i.e. an .ioc2 file) is provided in the template, containing the proper peripheral configuration based on the Cube ecosystem evolution.
-  - The link with TouchGFX is done outside STM32CubeMX2, manually modifying some generated files (e.g. CMakeLists.txt)
-  - Code generation from STM32CubeMX2 must be done with care as it may break the link with TouchGFX
-  - Only VS Code&reg; IDE (cmake) is currently supported
-  - Some minor warnings may be visible in the VS Code&reg; build output windows
+  In the meantime, after generating code from the provided STM32CubeMX2 project you must generate code from the TouchGFX Designer project to update CMake project with TouchGFX files (CMakeLists.txt).
 
-  As a summary, the TBS usage (in the current version 3.0.2) is mainly recommended for prototyping on the NUCLEO-C5A3ZG with the Riverdi display and code generation must only be done in the TouchGFX Designer, not from STM32CubeMX2.
+  Note also that the current version (3.0.2) of the TBS only supports VS Code&reg; IDE (cmake) by default and some minor warnings may be visible in the VS Code&reg; build output windows.
   
-  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects is available on the [TouchGFX Documentation dedicated article](https://support.touchgfx.com/docs/development/scenarios/touchgfx-with-mx2).  
+  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects (starting from scratch) is available on the [TouchGFX Documentation dedicated article](https://support.touchgfx.com/docs/development/scenarios/touchgfx-with-mx2).  
   This article will be regularly updated.  
   
 ### 1.4. RAM usage reduction
@@ -77,11 +73,45 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
   
   `\TouchGFX\target\generated\TouchGFXGeneratedHAL.cpp`  
   <img src="./img/1.4.PartialFrameBuffer_TouchGFXGeneratedHAL.png" width ="1024" />
+
   
-## 2. TouchGFX Designer RGB image compression feature
+## 2. TouchGFX smart rendering
   [🔼Top](#table-of-contents)  
   
-  In this section 2 screens will be defined each one including an image widget populated with a Bitmap from the stock images.
+  This section illustrates how the smart rendering algorithm of the TouchGFX library combined with the partial framebuffer strategy hance allows to minimize the amount of computed and transmitted data to the display.  
+  It is independant from the next sections, 
+
+  A background image will be added to the first screen as well as a small icon, both from the stock images.
+  An interaction will also be added to move the widget in the screen.
+  After generating the code the PC simulator version of the GUI will be launched and a specific feature of the simulator will be enabled.
+  This feature allows to identify which part of the framebuffer is updated during the animation.  
+ 
+  1. Insert a background image to the screen  
+    ![2.1.TouchGFX-Screen1-Add-Background](./img/2.1.TouchGFX-Screen1-Add-Background.gif)  
+  
+  2. Insert a logo image on top of it  
+    ![2.2.TouchGFX-Screen1-Add-Logo](./img/2.2.TouchGFX-Screen1-Add-Logo.gif)  
+
+  3. Animate the logo using by defining an interaction  
+    ![2.3.TouchGFX-Screen1-Animate-Logo](./img/2.3.TouchGFX-Screen1-Animate-Logo.gif)  
+
+  4. Generate and launch the PC simulator version of the GUI  
+    ![2.4.TouchGFX-Generate-and-launch-PC-Simulator](./img/2.4.TouchGFX-Generate-and-launch-PC-Simulator.gif)  
+  
+  5. Use PC Simulator keyboard shortcuts:  
+    `F5` key to restart the demo  
+    `F2` key to enable PC simulator feature that shows update region  
+    ![2.5.TouchGFX-PC-Simulator-F2-Feature](./img/2.5.TouchGFX-PC-Simulator-F2-Feature.gif)  
+  
+  The interesting point is that, using partial frambuffer strategy, this area is the exact amount of data that is computed and transmitted to the display, using 1 or 2 buffers depending on the configuration.  
+
+## 3. TouchGFX Designer RGB image compression feature
+  [🔼Top](#table-of-contents)  
+  
+  In this section, we restart from a blank GUI, use the menu `Edit`->`Import`->`GUI`  
+  ![3.0.Designer-reset-GUI](./img/3.0.Designer-reset-GUI.gif)
+
+  First, 2 screens will be defined each one including an image widget populated with a Bitmap from the stock images.
   FLASH usage will be analyzed first without any optimization and then with compression option.
   
   1. Insert a second screen using the dedicated button  
@@ -127,7 +157,7 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
 
   With very simple image format settings the external FLASH usage has been significantly reduced (around 28% compression ratio).
 
-## 3. TouchGFX Designer L8 image compression feature 
+## 4. TouchGFX Designer L8 image compression feature 
   [🔼Top](#table-of-contents)  
   
   In this section an existing demo will be imported.
@@ -163,15 +193,17 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
 >  
 >  The gain in FLASH footprint remains significant despite this, but it must be kept in mind and balanced against the use of RGB compression techniques that has no ROM impact but a computing one at runtime (for the decompression process).  
 
-## 4. Other FLASH saving techniques
+[More information on LUT color formats](https://support.touchgfx.com/docs/development/ui-development/touchgfx-engine-features/image-compression#l8-compression)
+
+## 5. Other FLASH saving techniques
   
-### 4.1 Compressed LUT format for texts
+### 5.1 Compressed LUT format for texts
   [🔼Top](#table-of-contents)  
 
   The Look-up table format compression can also be applied to Fonts, directly in the TouchGFX Designer Texts panel:  
   <img src="./img/4.L4_Font_Format.png" width ="800" />  
   
-### 4.2 Computed graphics
+### 5.2 Computed graphics
   [🔼Top](#table-of-contents)  
 
   When building a graphical user interface a common practice is to use mostly images for all graphical elements, background images, logo, separators, and then try to reduce their size using compression techniques.  
@@ -183,7 +215,7 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
   Please refer to the following article for more details:
   [Canvas Widgets](https://support.touchgfx.com/docs/development/ui-development/touchgfx-engine-features/canvas-widgets#custom-canvas-widgets)
 
-### 4.3 Vector Graphics
+### 5.3 Vector Graphics
   [🔼Top](#table-of-contents)  
 
   Other FLASH usage reduction techniques are available in the TouchGFX Designer, notably the use of Vector Graphics for both images and text.
