@@ -18,6 +18,7 @@ This repository contains all the requirements needed to follow the hands-on part
 ## 1. Prerequisites
 
 ### 1.1. Hardware
+  [🔼Top](#table-of-contents)  
 
 The hardware setup consists in 2 boards:
 
