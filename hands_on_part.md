@@ -50,18 +50,12 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
 
   The STM32C5 family is the first one to come with the updated ecosystem: [STM32CubeMX2](https://community.st.com/t5/developer-news/introducing-stm32cubemx2-a-new-flavor-of-stm32cubemx-tool/ba-p/885793)
   
-  If TouchGFX 4.x.x is fully supported in the STM32CubeMX tool (as an expansion pack) it is not yet the case on STM32CubeMX2.
-  This integration will be guaranteed by the TouchGFX 5.x.x currently under development.
-
-  The current integration of TouchGFX is thus currently done manually by updating `CMakeLists.txt` with TouchGFX specific lines, see screenshot below:  
-
-    ![Modified CMakeLists.txt](./img/TBS-NUCLEO-C5A3ZG_RVA15MD_Modified_CMakeLists.png)  
-
-  At the time of writing this article, STM32CubeMX2 code generation overwrites this file (after making a backup copy of it) and user must manually reinject these TouchGFX specific lines to keep the project functional.
-
+  If TouchGFX 4.x.x is fully integrated in the STM32CubeMX tool (as an expansion pack) it is not yet the case on STM32CubeMX2 but it is supported.
+  The proper integration will be guaranteed by the TouchGFX 5.x.x currently under development.
+  
   Additionally, the current version (3.0.2) of the TBS only supports VS Code&reg; IDE (cmake) by default and some minor warnings may be visible in the VS Code&reg; build output windows.
     
-  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects (starting from scratch) is available on the [TouchGFX Documentation dedicated article](https://support.touchgfx.com/docs/development/scenarios/touchgfx-with-mx2).  
+  Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects (starting from scratch) are available on the [TouchGFX Documentation dedicated article](https://support.touchgfx.com/docs/development/scenarios/touchgfx-with-mx2).  
   This article will be regularly updated.  
   
 ### 1.4. RAM usage reduction
