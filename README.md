@@ -21,7 +21,7 @@ This repository contains all the requirements needed to follow the hands-on part
 
 The hardware setup consists in 2 boards:
 
-  |[NUCLEO-C5A3ZG](https://www.st.com/en/evaluation-tools/nucleo-c5a3zg.html#sample-buy)|[RVA15MD](https://riverdi.com/product/015-nucleo-64)|
+  |[NUCLEO-C5A3ZG](https://www.st.com/en/evaluation-tools/nucleo-c5a3zg.html#sample-buy)|[RVA15MD (v.1.1A or higher)](https://riverdi.com/product/015-nucleo-64)|
   |:---------------:|:--------:|
   | STM32C5A3ZGT6 MCU with FPU | 1.54 inches SPI display with touch capabilities |
   | Cortex&reg;-M33 running at 144Mhz | 240 per 240 pixels - 16-bits color depth |
