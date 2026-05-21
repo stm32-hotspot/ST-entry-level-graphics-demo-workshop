@@ -87,20 +87,33 @@ If you manage to complete all the following steps you will be ready not only to 
 ### 2.2 Build project in VS Code&reg;
   [🔼Top](#table-of-contents)  
   
-  1. Open VS Code&reg;, be sure to be set the right Profile and open the project folder  
-    ![VS Code&reg;-Open-Project](./img/VSCode-Open_Project.gif)
+  1. Open workspace in VS Code&reg;:  
+    - You may either double-click on the `C:\Workshop\MyApplication\STM32C5A3ZG_NUCLEO_RVA15MD.code-workspace`, this will open a new VS Code&reg; windows (check the profile) or drag-and-drop the file in an existing VS Code&reg; set to the profile created earlier  
+    - This will create a new workspace containing 2 folders  
+        - `STM32C5A3ZG_NUCLEO_RVA15MD_cmake` (main project)  
+        - `TouchGFX` (TouchGFX specific source code)  
+    - Some popups will then appear on the bottom-right side of the windows during project automatic discovery, you can ignore them, we will force the project setup in the next step  
+    ![VS Code&reg;-Open-Project](./img/VSCode-Open_Project_Updated.gif)
 
-  2. Setup the project (in case you missed the popup window)  
-    ![VS Code&reg;-Setup-Project](./img/VSCode-Setup_Project.gif)
+  2. Setup the project  
+    - Click on the `STM32C5A3ZG_NUCLEO_RVA15MD_cmake`  
+    - Open the Command Palette using menu `View->Command Palette..` or `Crtl + Shift + P`  
+    - Type `STM32cube: Set up STM32Cube Projects`  
+    - Select `STM32C5A3ZG_NUCLEO_RVA15MD_cmake` in the center-top menu  
+    - Click on Save and Close button  
+    ![VS Code&reg;-Setup-Project](./img/VSCode-Setup_Project_Updated.gif)
 
-  3. Add the TouchGFX folder to the workspace.  
-     In this TBS the TouchGFX folder is next to the main project folder so it must be added manually to the VS Code&reg; workspace to ease code browsing/searching and breakpoint settings  
-    ![VS Code&reg;-Add-TouchGFX-to-Workspace](./img/VSCode-Add-TouchGFX-to-workspace.gif)
+  3. Build the project  
+    - Click on CMake tab on the right side of the window  
+    - In `Project Outline`, select `STM32C5A3ZG_NUCLEO_RVA15MD` and click on the `Build` icon  
+    - This will automatically build the entire project, including TouchGFX code  
+    ![VS Code&reg;-Build-Project](./img/VSCode-Build_Project_Updated.gif)
 
-  4. Build the project  
-    ![VS Code&reg;-Build-Project](./img/VSCode-Build_Project.gif)
-
-  5. Plug the board and launch a debug session then click on "Go", if the board screen turns to red, sanity check is successfull!  
+  5. Program the application  
+    - Plug the board  
+    - Click on the `Load and Debug` tab on the left side  
+    - Click on `Start Debugging` or type `F5`  
+    - Once stopped in main function, click on `Continue` (center-top toolbar) or type `F5`, if the board screen turns to red, sanity check is successfull!  
     ![VS Code&reg;-Launch-Debug](./img/VSCode-Launch_Debug.gif)
 
 ## 3. Hands-on

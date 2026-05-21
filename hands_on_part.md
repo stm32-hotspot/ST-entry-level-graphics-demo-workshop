@@ -53,7 +53,7 @@ This hands-on demonstrates in practice some of the TouchGFX Designer features de
   If TouchGFX 4.x.x is fully integrated in the STM32CubeMX tool (as an expansion pack) it is not yet the case on STM32CubeMX2 but it is supported.
   The proper integration will be guaranteed by the TouchGFX 5.x.x currently under development.
   
-  Additionally, the current version (3.0.2) of the TBS only supports VS Code&reg; IDE (cmake) by default and some minor warnings may be visible in the VS Code&reg; build output windows.
+  Additionally, the current version (3.0.3) of the TBS only supports VS Code&reg; IDE (cmake) by default and some minor warnings may be visible in the VS Code&reg; build output windows.
     
   Guidelines on how to use TouchGFX 4.x.x with STM32CubeMX2 projects (starting from scratch) are available on the [TouchGFX Documentation dedicated article](https://support.touchgfx.com/docs/development/scenarios/touchgfx-with-mx2).  
   This article will be regularly updated.  
